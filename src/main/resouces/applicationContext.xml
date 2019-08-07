@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
+    <!--spring添加注解扫描-->
+    <context:annotation-config></context:annotation-config>
+    <!--spring 注解扫描但是要排除spring mvc的控制器-->
+    <context:component-scan base-package="com" >
+        <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"></context:exclude-filter>
+    </context:component-scan>
+
+    <!--加载资源文件-->
+    <context:property-placeholder location="classpath:jdbc.properties"/>
+    <!--配置数据源，阿里数据连接池-->
+    <bean id="dataSource" class="${jdbc.dataType}" destroy-method="close">
+        <property name="driverClassName" value="${jdbc.driver}"/>
+        <property name="url" value="${jdbc.url}"/>
+        <property name="username" value="${jdbc.usename}"/>
+        <property name="password" value="${jdbc.password}"/>
+
+        <!-- 数据库连接池配置 -->
+        <property name="initialSize" value="20" /><!-- 初始化连接数量 -->
+        <property name="minIdle" value="5" />   <!-- 最小空闲连接数量 -->
+        <property name="maxActive" value="1500" /> <!-- 最大连接数量 -->
+        <property name="maxWait" value="60000" />  <!-- 最大建立连接等待时间(毫秒)。如果超过此时间将接到异常。设为－1表示无限制-->
+        <property name="timeBetweenEvictionRunsMillis" value="60000" />  <!--  配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒   -->
+        <property name="minEvictableIdleTimeMillis" value="300000" />   <!-- 配置一个连接在池中最小生存的时间，单位是毫秒   -->
+        <property name="validationQuery" value="SELECT 'x'" />
+        <property name="testWhileIdle" value="true" />  <!--空闲时是否进行验证，检查对象是否有效 -->
+        <property name="testOnBorrow" value="false" />  <!--取得对象时是否进行验证，检查对象是否有效 -->
+        <property name="testOnReturn" value="false" />  <!--返回对象时是否进行验证 -->
+        <!--  打开PSCache，并且指定每个连接上PSCache的大小   -->
+        <property name="poolPreparedStatements" value="true" />  <!-- 表明是否开启statement cache，默认为false，也就是不开启 -->
+        <property name="maxPoolPreparedStatementPerConnectionSize" value="20" />  <!-- statement cache的大小，默认为-1，也就是不限制 -->
+
+        <!-- 配置监控统计拦截的filters，去掉后监控界面sql无法统计   -->
+        <property name="filters" value="stat" />
+    </bean>
+
+
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="configLocation" value="classpath:mybatis-config.xml"/>
+        <property name="dataSource" ref="dataSource"/>
+        <!-- 扫描entity包 使用别名 -->
+        <property name="typeAliasesPackage" value="com.lwc.pojo"/>
+        <!-- 扫描sql配置文件:mapper需要的xml文件 -->
+        <property name="mapperLocations" value="classpath:com/lwc/dao/mapper/*.xml"/>
+    </bean>
+    <!--根据接口名生成对应的代理类-->
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="basePackage" value="com.lwc.dao"/>
+        <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
+    </bean>
+
+
+    <!-- 配置事务管理器 -->
+    <bean id="transactionManager"
+          class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <!-- 注入数据库连接池 -->
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+
+    <!--配置事务切面-->
+    <aop:config>
+        <aop:advisor advice-ref="txAdvice" pointcut="execution(* com.lwc.service.*.*(..))"></aop:advisor>
+    </aop:config>
+    <!-- 2 事务详情（事务通知）  ， 在aop筛选基础上，比如对ABC三个确定使用什么样的事务。例如：AC读写、B只读 等
+       <tx:attributes> 用于配置事务详情（属性属性）
+           <tx:method name=""/> 详情具体配置
+               propagation 传播行为 ， REQUIRED：必须；REQUIRES_NEW:必须是新的
+               isolation 隔离级别
+   -->
+    <tx:advice id="txAdvice" transaction-manager="transactionManager">
+        <tx:attributes>
+            <tx:method name="*" propagation="REQUIRED"/>
+        </tx:attributes>
+    </tx:advice>
+</beans>
