@@ -4,6 +4,7 @@ import com.lwc.redis.annotation.GetCache;
 import com.lwc.util.RedisCache;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
+import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
 import org.aspectj.lang.reflect.MethodSignature;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +15,7 @@ import java.io.Serializable;
 import java.lang.reflect.Method;
 
 @Component
+@Aspect
 public class GetCachAop {
     @Autowired
     private RedisTemplate<Serializable,Object> redisTemplate;
@@ -37,6 +39,7 @@ public class GetCachAop {
            System.out.println("从redis中获取到了数据");
            return object;
        }else{
+           System.out.println("从数据库中查询数据");
            //如果没有查询到，则在数据库中进行查询
            try {
                object=joinPoint.proceed();
@@ -56,6 +59,7 @@ public class GetCachAop {
      * @param joinPoint
      * @return
      */
+    //变量没有用到时不让警告
    @SuppressWarnings("unused")
    private String getCacheKey(ProceedingJoinPoint joinPoint){
        //获取切入方法的一些相关的信息

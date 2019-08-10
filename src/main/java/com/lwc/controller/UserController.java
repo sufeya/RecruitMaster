@@ -13,6 +13,7 @@ public class UserController {
     @RequestMapping("/showUser")
     public String showUser(){
        User user= userService.getUser(1);
+        System.out.println("fdsa");
         System.out.println(user.toString());
         return null;
     }
