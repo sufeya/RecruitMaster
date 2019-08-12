@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>求职者注册</title>
+    <link rel="stylesheet" href="/CR/02/style/css/vendors.e81e4c.css">
+    <link rel="stylesheet" href="/CR/02/style/css/register.43f189.css">
+</head>
+<body>
+<script>
+    (function () {
+        var zpStatParams = {
+            'current_url': location.href,
+            referrer: document.referrer,
+            title: document.title,
+            'appid': 'A13',
+            'invuserid': window.$query.invuserid,
+            'invtp': window.$query.invtp,
+            'invmode': window.$query.invmode
+        };
+
+        window.zpStatConfig = {
+            page: zpStatParams,
+            sa: {
+                show_log: false
+            }
+        };
+    })();
+</script>
+<script src="https://common-bucket.zhaopin.cn/js/zpfe-stat-sdk/zpfe-stat-sdk-latest.js"></script>
+
+
+<div id="header-curtain"><!-- ko component: "app-header-curtain" -->
+    <div class="header-curtain__wrapper" data-bind="style: { height: wrapperHeight }" style="height: 0px;">
+        <div class="header-curtain__img" data-bind="style:{ height: height}">
+            <div class="header-curtain__center"> <!-- ko if: expanded --><!-- /ko -->
+                <div class="header-curtain__spread" data-bind="style: { width: innerWidth, marginLeft: innerOffset }"
+                     style="width: 1920px; margin-left: -960px;"> <!-- ko if: currentAd() --><!-- /ko --> </div>
+            </div>
+        </div>
+    </div> <!-- /ko --></div>
+
+<div id="root"><!-- ko component: "app" --> <!-- ko component: { name: 'simple-header', params: { } } -->
+    <div class="simple-header" data-bind="css: clazz">
+        <div class="simple-header__inner"> <!-- ko template: { nodes: $componentTemplateNodes } -->
+            <!-- ko with: $parent --> <a class="simple-header__logo-link" href="/"> <img alt="Logo"
+                                                                                         class="simple-header__logo"
+                                                                                         src="//rd5-public.zhaopin.cn/imgs/zplogo.png">
+            </a> <span class="simple-header__divider"></span> <span class="simple-header__title">企业注册</span> <span
+                    class="simple-header__extra is-pulled-right is-hidden-on-mobile"> 已有账号，<a
+                    data-bind="attr: { href: loginLink }" href="https://passport.zhaopin.com/org/login">去登录 <i
+                    class="fa fa-angle-right"></i></a> </span> <span
+                    class="simple-header__extra is-pulled-right is-block-on-mobile"> <a
+                    data-bind="attr: { href: loginLink }" href="https://passport.zhaopin.com/org/login">登录</a> </span>
+            <!-- /ko --> <!-- /ko --> </div>
+    </div> <!-- /ko -->
+    <!-- ko component: { name: 'app-container', params: { clazz: 'register', hasFatFooter: true } } -->
+    <!-- ko if: hasNotify --><!-- /ko -->
+    <div class="app-container register" data-bind="css: clazz"> <!-- ko with: $parent -->
+        <!-- ko template: { nodes: $componentTemplateNodes } -->
+        <!-- ko component: { name: 'steps', params: { value: step } } -->
+        <!-- ko template: { nodes: $componentTemplateNodes } -->
+        <div class="k-steps">
+            <div class="k-step is-pulled-left is-active">
+                <div class="k-step__icon">1</div>
+                <div class="k-step__title">验证手机号码</div>
+            </div>
+            <div class="k-step">
+                <div class="k-step__icon">2</div>
+                <div class="k-step__title">填写账号信息</div>
+            </div>
+            <div class="k-step is-pulled-right">
+                <div class="k-step__icon"><i class="km km-check"></i></div>
+                <div class="k-step__title">注册成功</div>
+            </div>
+        </div> <!-- /ko --> <!-- /ko --> <!-- ko if: step() === 0 -->
+        <!-- ko component: { name: 'verify-mobile', params: { onSuccess: onMobileVerified } } -->
+        <div>
+            <div id="login-widget" class="is-fullwidth-on-mobile">
+                <div class="zp-passport-widget-plugin">
+                    <div class="zp-passport-widget-b-login-sms">
+                        <div class="zp-passport-widget-b-login-sms__phone__wrapper">
+                            <div class="zp-passport-widget-b-login-sms__region-box">
+                                <input class="zp-passport-widget-b-login-sms__region" type="text" data-value="86"
+                                       value="中国+86" readonly=""><i
+                                    class="zp-passport-widget-b-login-sms__region__arrow"></i>
+                                <ul class="zp-passport-widget-b-login-sms__region__list zp-passport-widget-b-login-sms__region__list--hide">
+                                    <li class="zp-passport-widget-b-login-sms__region__item zp-passport-widget-b-login-sms__region__item--selected "
+                                        data-value="86" data-label="中国+86">中国+86
+                                    </li>
+                                    <li class="zp-passport-widget-b-login-sms__region__item  " data-value="852"
+                                        data-label="中国香港+852">中国香港+852
+                                    </li>
+                                    <li class="zp-passport-widget-b-login-sms__region__item  " data-value="853"
+                                        data-label="中国澳门+853">中国澳门+853
+                                    </li>
+                                    <li class="zp-passport-widget-b-login-sms__region__item  " data-value="886"
+                                        data-label="中国台湾+886">中国台湾+886
+                                    </li>
+                                    <li class="zp-passport-widget-b-login-sms__region__item  " data-value="1"
+                                        data-label="美国+1">美国+1
+                                    </li>
+                                    <li class="zp-passport-widget-b-login-sms__region__item  " data-value="81"
+                                        data-label="日本+81">日本+81
+                                    </li>
+                                    <li class="zp-passport-widget-b-login-sms__region__item  " data-value="44"
+                                        data-label="英国+44">英国+44
+                                    </li>
+                                    <li class="zp-passport-widget-b-login-sms__region__item  zp-passport-widget-b-login-sms__region__item--last"
+                                        data-value="33" data-label="法国+33">法国+33
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="zp-passport-widget-b-login-sms__number-box">
+                                <input class="zp-passport-widget-b-login-sms__number" type="text"
+                                       placeholder="请输入手机号，用于接收系统通知">
+                            </div>
+                        </div>
+                        <p class="zp-passport-widget-b-login-sms__error-tip zp-passport-widget-b-login-sms__phone__error-tip"></p>
+                        <div class="zp-passport-widget-b-login-sms__code-box">
+                            <input class="zp-passport-widget-b-login-sms__code" type="text" placeholder="短信验证码">
+                            <button class="zp-passport-widget-b-login-sms__send-code" type="button">获取短信验证码</button>
+                            <button class="zp-passport-widget-b-login-sms__code-timer" type="button"><span
+                                    class="zp-passport-widget-b-login-sms__code-time">60</span><span>秒后重新获取</span>
+                            </button>
+                        </div>
+                        <p class="zp-passport-widget-b-login-sms__error-tip zp-passport-widget-b-login-sms__code__error-tip"></p>
+                        <p class="zp-passport-widget-b-login-sms__error-tip zp-passport-widget-b-login-sms__voice-code-tip">
+                            <span>没收到短信？</span>
+                            <button class="zp-passport-widget-b-login-sms__send-voice-code">点此获取语音验证码</button>
+                        </p>
+                        <label class="zp-passport-widget-b-login-sms__remember">
+                            <input class="zp-passport-widget-b-login-sms__remember-check" type="checkbox"
+                                   name="remember" checked=""><span
+                                class="zp-passport-widget-b-login-sms__remember-title">自动登录</span>
+                        </label>
+                        <div class="register-agreement">
+                            <!-- ko component: { name: 'k-checkbox', params: { checked: isAgreement }} --> <label
+                                data-bind="css: labelCssObj, click:onClick, clickBubble:clickBubble" role="checkbox"
+                                class="k-checkbox"> <span data-bind="css: labelCssObj" class="k-checkbox__input"> <span
+                                class="k-checkbox__inner"> <i class="fa fa-check"></i> </span>
+                            <!-- ko if: checkedValue() --><!-- /ko --> <!-- ko if: !checkedValue() --> <input
+                                    data-bind="hasFocus: hasFocus, checked: checked, disable: disabled, attr: { value: value }"
+                                    type="checkbox" class="k-checkbox__original" value=""> <!-- /ko --> </span>
+                            <!-- ko if: hasSlot($componentTemplateNodes) -->
+                            <!-- ko template: { nodes: $componentTemplateNodes } --> <span> <span>同意智联招聘</span> <a
+                                    class="has-text-primary is-pure"
+                                    href="https://ihr.zhaopin.com/promoteffect/regist.html"
+                                    target="_blank"> 《用户服务协议》 </a> 和 <a class="has-text-primary is-pure"
+                                                                        href="https://special.zhaopin.com/sh/2009/aboutus/secrecy.html"
+                                                                        target="_blank"> 《隐私政策》 </a> </span>
+                            <!-- /ko --> <!-- /ko --> <!-- ko ifnot: hasSlot($componentTemplateNodes) --><!-- /ko -->
+                        </label> <!-- /ko --> </div>
+                        <button class="zp-passport-widget-b-login-sms__submit" disabled="disabled">下一步</button>
+                        <p class="zp-passport-widget-b-login-sms__register">没有账号？马上<a
+                                class="zp-passport-widget-b-login-sms__register-link"
+                                href="https://rd5.zhaopin.com/register" target="_blank">注册</a></p>
+                    </div>
+                </div>
+            </div>
+        </div> <!--  <form class="k-form k-form&#45;&#45;label-right verify-mobile is-fullwidth-on-mobile">-->
+        <!--  <div class="k-form-item" rule="mobile">--> <!--  <label class="k-form-item__label">手机号码</label>-->
+        <!--  <div class="k-form-item__content">-->
+        <!--  <div class="k-input k-input-group k-input-group&#45;&#45;prepend">-->
+        <!--  <div class="k-input-group__prepend">-->
+        <!--  &lt;!&ndash; ko component: { name: 'k-select', params: { value: form.mobileArea, adjust2Relative: false, htmlLabel: true } } &ndash;&gt;-->
+        <!--  <div class="k-select verify-mobile__select">--> <!--  <div class="k-input k-input&#45;&#45;suffix">-->
+        <!--  &lt;!&ndash;<input placeholder="请选择" readonly="readonly" type="text" class="k-input__inner">&ndash;&gt;-->
+        <!--  <span class="k-input__inner"></span>--> <!--  <span class="k-input__suffix">-->
+        <!--  <span class="k-input__suffix-inner">-->
+        <!--  <i class="k-input__icon k-select__caret fa fa-chevron-down"></i>--> <!--  </span>--> <!--  </span>-->
+        <!--  </div>--> <!--  <div class="k-select-dropdown k-popper verify-mobile__popper">-->
+        <!--  <ul class="k-select-dropdown__list" style="position:relative">-->
+        <!--  &lt;!&ndash; ko foreach: {data: $parent.mobileAreas, as: 'item'} &ndash;&gt;-->
+        <!--  <li class="k-select-dropdown__item"-->
+        <!--  data-bind="attr: { 'data-value': item.value, 'data-label': item.label }">-->
+        <!--  <div data-bind="html: item.label"></div>--> <!--  </li>--> <!--  &lt;!&ndash; /ko &ndash;&gt;-->
+        <!--  </ul>--> <!--  </div>--> <!--  <div class="k-popper__arrow"></div>--> <!--  </div>-->
+        <!--  &lt;!&ndash; /ko &ndash;&gt;--> <!--  </div>-->
+        <!--  <input type="text" placeholder="请输入手机号，登录和找回密码" class="k-input__inner"-->
+        <!--  data-bind="value: form.mobile, hasFocus: isMobileInputFocus">--> <!--  </div>--> <!--  </div>-->
+        <!--  </div>--> <!--  <div class="k-form-item k-form-item&#45;&#45;code" rule="code">-->
+        <!--  <label class="k-form-item__label">验证码</label>--> <!--  <div class="k-form-item__content">-->
+        <!--  <input type="text" placeholder="请输入验证码" class="k-input__inner"-->
+        <!--  data-bind="value: form.code, hasFocus: isCodeInputFocus">--> <!--  </div>-->
+        <!--  <button class="k-button"-->
+        <!--  data-bind="click: getCode, text: codeButtonText, attr: { disabled: codeButtonDisabled }"></button>-->
+        <!--  </div>--> <!--  <div class="verify-mobile__agreement">-->
+        <!--  &lt;!&ndash; ko component: { name: 'k-checkbox', params: { checked: isAgreement }} &ndash;&gt;-->
+        <!--  <span class="is-ml-5">--> <!--  <span class="has-text-grey-light">同意智联招聘</span>-->
+        <!--  <a class="has-text-primary is-pure" href="https://ihr.zhaopin.com/promoteffect/regist.html" target="_blank">-->
+        <!--  《用户服务协议》--> <!--  </a>--> <!--  和-->
+        <!--  <a class="has-text-primary is-pure" href="https://special.zhaopin.com/sh/2009/aboutus/secrecy.html"-->
+        <!--  target="_blank">--> <!--  《隐私政策》--> <!--  </a>--> <!--  </span>--> <!--  &lt;!&ndash; /ko &ndash;&gt;-->
+        <!--  </div>--> <!--  <button class="k-button is-primary step-button"-->
+        <!--  data-bind="click: submit, css: { 'is-loading': loading }, attr: { disabled: !isAgreement() || loading() }"-->
+        <!--  >--> <!--  下一步--> <!--  </button>--> <!--  </form>--> <!-- /ko --> <!-- /ko -->
+        <!-- ko if: step() === 1 --><!-- /ko --> <!-- ko if: step() === 2 --><!-- /ko --> <!-- /ko --><!-- /ko -->
+    </div> <!-- ko if: hasFatFooter -->
+    <div class="app-footer">
+        <div class="app-footer__inner">
+            <div class="app-footer__links is-pulled-left"><a class="app-footer__link"
+                                                             href="//ihr.zhaopin.com/promoteffect/regist.html"
+                                                             target="_blank">用户协议</a> <span class="app-footer__divider">|</span>
+                <a class="app-footer__link" href="//special.zhaopin.com/sh/2009/aboutus/law.html"
+                   target="_blank">法律声明</a> <span class="app-footer__divider">|</span> <a class="app-footer__link"
+                                                                                          href="http://special.zhaopin.com/sh/2009/aboutus/secrecy.html"
+                                                                                          target="_blank">隐私政策</a></div>
+            <div class="copyright is-pulled-right">版权所有 zhaopin.com</div>
+        </div>
+    </div> <!-- /ko --> <!-- ko ifnot: hasFatFooter --><!-- /ko --> <!-- ko if: hasFeedbackBox --><!-- /ko -->
+    <!-- ko if: hasFloatLink --><!-- /ko --> <!-- /ko --> <!-- /ko --></div>
+<script src="//common-bucket.zhaopin.cn/js/knockout/knockout-3.4.2.js"></script>
+<script type="text/javascript"
+        src="https://common-bucket.zhaopin.cn/js/zp-passport-widget/zp-passport-widget-latest.js"></script>
+<script src="https://common-bucket.zhaopin.cn/passport/js/geetest/gt.js"></script>
+<script src="//rd-bucket.zhaopin.cn/manifest.web.c037b2.js"></script>
+<script src="//rd-bucket.zhaopin.cn/vendors.web.930b60.js"></script>
+<script src="//rd-bucket.zhaopin.cn/register.web.00860c.js"></script>
+
+<script src="https://rd5-public.zhaopin.cn/lib/td/td-v1.js"></script>
+
+
+<div class="geetest_panel geetest_wind" style="display: none;">
+    <div class="geetest_panel_ghost"></div>
+    <div class="geetest_panel_box">
+        <div class="geetest_other_offline geetest_panel_offline"></div>
+        <div class="geetest_panel_loading">
+            <div class="geetest_panel_loading_icon"></div>
+            <div class="geetest_panel_loading_content">智能验证检测中</div>
+        </div>
+        <div class="geetest_panel_success">
+            <div class="geetest_panel_success_box">
+                <div class="geetest_panel_success_show">
+                    <div class="geetest_panel_success_pie"></div>
+                    <div class="geetest_panel_success_filter"></div>
+                    <div class="geetest_panel_success_mask"></div>
+                </div>
+                <div class="geetest_panel_success_correct">
+                    <div class="geetest_panel_success_icon"></div>
+                </div>
+            </div>
+            <div class="geetest_panel_success_title">通过验证</div>
+        </div>
+        <div class="geetest_panel_error">
+            <div class="geetest_panel_error_icon"></div>
+            <div class="geetest_panel_error_title">网络超时</div>
+            <div class="geetest_panel_error_content">请点击此处重试</div>
+            <div class="geetest_panel_error_code">
+                <div class="geetest_panel_error_code_text"></div>
+            </div>
+        </div>
+        <div class="geetest_panel_footer">
+            <div class="geetest_panel_footer_logo"></div>
+            <div class="geetest_panel_footer_copyright">由极验提供技术支持</div>
+        </div>
+        <div class="geetest_panel_next"></div>
+    </div>
+</div>
+</body>
+</html>

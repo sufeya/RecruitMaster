@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>求职者注册</title>
+    <link rel="stylesheet" href="/CR/02/style/css/login.6eeaa7.css">
+    <link rel="stylesheet" href="/CR/02/style/css/vendors.d1e7fd.css">
+    <link rel="stylesheet" href="/CR/02/style/css/style.css">
+</head>
+<body>
+<script>
+    (function () {
+        var zpStatParams = {
+            'current_url': location.href,
+            referrer: document.referrer,
+            title: document.title,
+            'appid': 'A13',
+            'invuserid': window.$query.invuserid,
+            'invtp': window.$query.invtp,
+            'invmode': window.$query.invmode
+        };
+
+        window.zpStatConfig = {
+            page: zpStatParams,
+            sa: {
+                show_log: false
+            }
+        };
+    })();
+</script>
+<script src="https://common-bucket.zhaopin.cn/js/zpfe-stat-sdk/zpfe-stat-sdk-latest.js"></script>
+
+<div id="header-curtain"><!-- ko component: "app-header-curtain" -->
+    <div class="header-curtain__wrapper" data-bind="style: { height: wrapperHeight }" style="height: 0px;">
+        <div class="header-curtain__img" data-bind="style:{ height: height}">
+            <div class="header-curtain__center"> <!-- ko if: expanded --><!-- /ko -->
+                <div class="header-curtain__spread" data-bind="style: { width: innerWidth, marginLeft: innerOffset }"
+                     style="width: 1920px; margin-left: -960px;"> <!-- ko if: currentAd() --><!-- /ko --> </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="root">
+    <div>
+        <div class="is-block-on-mobile">
+            <div class="simple-header" data-bind="css: clazz">
+                <div class="simple-header__inner">
+                    <a class="simple-header__logo-link" href="/"> <img alt="Logo" class="simple-header__logo"
+                                                                       src="//rd5-public.zhaopin.cn/imgs/zplogo.png">
+                    </a> <span class="simple-header__divider"></span> <span class="simple-header__title">企业登录</span>
+                    <span class="simple-header__extra is-pulled-right is-block-on-mobile"></span>
+                </div>
+            </div>
+        </div>
+        <div class="login" data-bind="style: bodyStyle"
+             style="background-image: url(&quot;//plat-bucket.zhaopin.cn/ad/imgs/8aade754-c447-474d-bedb-72470d0194d1.png&quot;);">
+            <div class="login__wrapper"><img class="login__wrapper--bg" data-bind="attr: { src: srcImg }"
+                                             src="//plat-bucket.zhaopin.cn/ad/imgs/ea50012e-146b-44e5-8563-42c4376e85ff.jpg">
+                <a class="login__wrapper--title" data-bind="attr: { href: titleHref }, style: titleStyle"
+                   href="//www.zhaopin.com" style="top: 0%; left: 7.09%; width: 23.87%; height: 12.21%;"></a>
+                <div class="login__inner">
+                    <div class="login__body">
+                        <div class="k-tabs login__tabs k-tabs--with-bar">
+                            <div class="k-tabs__header">
+                                <div class="k-tabs__nav-wrapper">
+                                    <div class="k-tabs__nav"><a class="k-tabs__item is-active has-bar"
+                                                                href="#login__account">账号登录</a> <a class="k-tabs__item"
+                                                                                                   href="#login__message">短信登录</a>
+                                        <div class="k-tabs__active-bar"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="k-tabs__content">
+                                <div class="k-tab-pane is-active" id="login__account">
+                                    <form class="k-form account-login">
+                                        <div class="k-form-item" rule="username">
+                                            <div class="k-form-item__content"><input type="text" placeholder="用户名"
+                                                                                     class="k-input__inner"
+                                                                                     data-bind="value: form.username"
+                                                                                     name="username" id="username">
+                                            </div>
+                                        </div>
+                                        <div class="k-form-item" rule="password">
+                                            <div class="k-form-item__content"><input type="password" placeholder="密码"
+                                                                                     class="k-input__inner"
+                                                                                     data-bind="value: form.password"
+                                                                                     name="password" id="password">
+                                            </div>
+                                        </div>
+                                        <div class="k-form-item" style="margin-bottom:12px">
+                                            <label data-bind="css: labelCssObj, click:onClick, clickBubble:clickBubble"
+                                                   role="checkbox" class="k-checkbox is-checked"> <span
+                                                    data-bind="css: labelCssObj"
+                                                    class="k-checkbox__input is-checked"> <span
+                                                    class="k-checkbox__inner"> <i class="fa fa-check"></i> </span>
+                                              <input
+                                                      data-bind="hasFocus: hasFocus, checked: checked, disable: disabled, attr: { value: value }"
+                                                      type="checkbox" class="k-checkbox__original" value="记住我">
+                                              </span> <span
+                                                    data-bind="text: label, visible: label"
+                                                    class="k-checkbox__label">记住我</span> <!-- /ko --> </label>
+                                        </div>
+                                        <div class="k-form-item">
+                                            <div class="k-form-item__content">
+                                                <button class="k-button is-primary account-login-button"
+                                                        data-bind="click: submit, css: { 'is-loading': loading }, attr: { disabled: validating() || loading() }">
+                                                    企业登录
+                                                </button>
+                                            </div>
+                                            <div class="abnormal-account"><span data-bind="text: message"></span></div>
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="k-tab-pane login__message" id="login__message">
+                                    <div class="zp-passport-widget-plugin">
+                                        <div class="zp-passport-widget-b-login-sms">
+                                            <div class="zp-passport-widget-b-login-sms__phone__wrapper">
+                                                <div class="zp-passport-widget-b-login-sms__region-box">
+                                                    <input class="zp-passport-widget-b-login-sms__region" type="text"
+                                                           data-value="86" value="中国+86" readonly=""><i
+                                                        class="zp-passport-widget-b-login-sms__region__arrow"></i>
+                                                    <ul class="zp-passport-widget-b-login-sms__region__list zp-passport-widget-b-login-sms__region__list--hide">
+                                                        <li class="zp-passport-widget-b-login-sms__region__item zp-passport-widget-b-login-sms__region__item--selected "
+                                                            data-value="86" data-label="中国+86">中国+86
+                                                        </li>
+                                                        <li class="zp-passport-widget-b-login-sms__region__item  "
+                                                            data-value="852" data-label="中国香港+852">中国香港+852
+                                                        </li>
+                                                        <li class="zp-passport-widget-b-login-sms__region__item  "
+                                                            data-value="853" data-label="中国澳门+853">中国澳门+853
+                                                        </li>
+                                                        <li class="zp-passport-widget-b-login-sms__region__item  "
+                                                            data-value="886" data-label="中国台湾+886">中国台湾+886
+                                                        </li>
+                                                        <li class="zp-passport-widget-b-login-sms__region__item  "
+                                                            data-value="1" data-label="美国+1">美国+1
+                                                        </li>
+                                                        <li class="zp-passport-widget-b-login-sms__region__item  "
+                                                            data-value="81" data-label="日本+81">日本+81
+                                                        </li>
+                                                        <li class="zp-passport-widget-b-login-sms__region__item  "
+                                                            data-value="44" data-label="英国+44">英国+44
+                                                        </li>
+                                                        <li class="zp-passport-widget-b-login-sms__region__item  zp-passport-widget-b-login-sms__region__item--last"
+                                                            data-value="33" data-label="法国+33">法国+33
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                                <div class="zp-passport-widget-b-login-sms__number-box">
+                                                    <input class="zp-passport-widget-b-login-sms__number" type="text"
+                                                           placeholder="请输入手机号码">
+                                                </div>
+                                            </div>
+                                            <p class="zp-passport-widget-b-login-sms__error-tip zp-passport-widget-b-login-sms__phone__error-tip"></p>
+                                            <div class="zp-passport-widget-b-login-sms__code-box">
+                                                <input class="zp-passport-widget-b-login-sms__code" type="text"
+                                                       placeholder="短信验证码">
+                                                <button class="zp-passport-widget-b-login-sms__send-code" type="button">
+                                                    获取短信验证码
+                                                </button>
+                                                <button class="zp-passport-widget-b-login-sms__code-timer"
+                                                        type="button"><span
+                                                        class="zp-passport-widget-b-login-sms__code-time">60</span><span>秒后重新获取</span>
+                                                </button>
+                                            </div>
+                                            <p class="zp-passport-widget-b-login-sms__error-tip zp-passport-widget-b-login-sms__code__error-tip"></p>
+                                            <p class="zp-passport-widget-b-login-sms__error-tip zp-passport-widget-b-login-sms__voice-code-tip">
+                                                <span>没收到短信？</span>
+                                                <button class="zp-passport-widget-b-login-sms__send-voice-code">
+                                                    点此获取语音验证码
+                                                </button>
+                                            </p>
+                                            <label class="zp-passport-widget-b-login-sms__remember">
+                                                <input class="zp-passport-widget-b-login-sms__remember-check"
+                                                       type="checkbox" name="remember" checked=""><span
+                                                    class="zp-passport-widget-b-login-sms__remember-title">自动登录</span>
+                                            </label>
+                                            <button class="zp-passport-widget-b-login-sms__submit">企业登录</button>
+                                            <p class="zp-passport-widget-b-login-sms__register">没有账号？马上<a
+                                                    class="zp-passport-widget-b-login-sms__register-link"
+                                                    href="https://rd5.zhaopin.com/register" target="_blank">注册</a></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="login__footer">
+                        <div class="is-pulled-left"><a data-bind="click: weixinLogin">
+                            <span class="circle-icon we-icon"> <i class="fa fa-weixin" aria-hidden="true"></i> </span> 微信登录 </a></div>
+                        <div class="is-pulled-right">
+                            <a class="register-link" data-bind="attr:{ href: registerLink }"  href="register.html">立即注册</a> <span
+                                class="link-gap">|</span>
+                            <a class="forget-link" data-bind="attr: { href: forgetLink }"
+                               href="forget.html">忘记密码</a></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="//common-bucket.zhaopin.cn/js/knockout/knockout-3.4.2.js"></script>
+<script type="text/javascript"
+        src="https://common-bucket.zhaopin.cn/js/zp-passport-widget/zp-passport-widget-latest.js"></script>
+<script src="https://common-bucket.zhaopin.cn/passport/js/geetest/gt.js"></script>
+<script src="//rd-bucket.zhaopin.cn/org/manifest.web.818a7e.js"></script>
+<script src="//rd-bucket.zhaopin.cn/org/vendors.web.ae5c1c.js"></script>
+<script src="//rd-bucket.zhaopin.cn/org/login.web.2fe99c.js"></script>
+
+<script src="//rd5-public.zhaopin.cn/lib/td/td-v1.js"></script>
+
+
+<div class="geetest_panel geetest_wind" style="display: none;">
+    <div class="geetest_panel_ghost"></div>
+    <div class="geetest_panel_box">
+        <div class="geetest_other_offline geetest_panel_offline"></div>
+        <div class="geetest_panel_loading">
+            <div class="geetest_panel_loading_icon"></div>
+            <div class="geetest_panel_loading_content">智能验证检测中</div>
+        </div>
+        <div class="geetest_panel_success">
+            <div class="geetest_panel_success_box">
+                <div class="geetest_panel_success_show">
+                    <div class="geetest_panel_success_pie"></div>
+                    <div class="geetest_panel_success_filter"></div>
+                    <div class="geetest_panel_success_mask"></div>
+                </div>
+                <div class="geetest_panel_success_correct">
+                    <div class="geetest_panel_success_icon"></div>
+                </div>
+            </div>
+            <div class="geetest_panel_success_title">通过验证</div>
+        </div>
+        <div class="geetest_panel_error">
+            <div class="geetest_panel_error_icon"></div>
+            <div class="geetest_panel_error_title">网络超时</div>
+            <div class="geetest_panel_error_content">请点击此处重试</div>
+            <div class="geetest_panel_error_code">
+                <div class="geetest_panel_error_code_text"></div>
+            </div>
+        </div>
+        <div class="geetest_panel_footer">
+            <div class="geetest_panel_footer_logo"></div>
+            <div class="geetest_panel_footer_copyright">由极验提供技术支持</div>
+        </div>
+        <div class="geetest_panel_next"></div>
+    </div>
+</div>
+<div class="geetest_panel geetest_wind" style="display: none;">
+    <div class="geetest_panel_ghost"></div>
+    <div class="geetest_panel_box">
+        <div class="geetest_other_offline geetest_panel_offline"></div>
+        <div class="geetest_panel_loading">
+            <div class="geetest_panel_loading_icon"></div>
+            <div class="geetest_panel_loading_content">智能验证检测中</div>
+        </div>
+        <div class="geetest_panel_success">
+            <div class="geetest_panel_success_box">
+                <div class="geetest_panel_success_show">
+                    <div class="geetest_panel_success_pie"></div>
+                    <div class="geetest_panel_success_filter"></div>
+                    <div class="geetest_panel_success_mask"></div>
+                </div>
+                <div class="geetest_panel_success_correct">
+                    <div class="geetest_panel_success_icon"></div>
+                </div>
+            </div>
+            <div class="geetest_panel_success_title">通过验证</div>
+        </div>
+        <div class="geetest_panel_error">
+            <div class="geetest_panel_error_icon"></div>
+            <div class="geetest_panel_error_title">网络超时</div>
+            <div class="geetest_panel_error_content">请点击此处重试</div>
+            <div class="geetest_panel_error_code">
+                <div class="geetest_panel_error_code_text"></div>
+            </div>
+        </div>
+        <div class="geetest_panel_footer">
+            <div class="geetest_panel_footer_logo"></div>
+            <div class="geetest_panel_footer_copyright">由极验提供技术支持</div>
+        </div>
+        <div class="geetest_panel_next"></div>
+    </div>
+</div>
+</body>
+</html>

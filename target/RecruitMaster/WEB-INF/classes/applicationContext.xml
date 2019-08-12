@@ -110,6 +110,7 @@
         <property name="port" value="${redis.port}"></property>
         <property name="poolConfig" ref="jedisPoolConfig"></property>
     </bean>
+
     <!-- redis操作模板，这里采用尽量面向对象的模板 -->
     <bean id="redisTemplate" class="org.springframework.data.redis.core.RedisTemplate">
         <property name="connectionFactory" ref="JedisConnectionFactory"/>
@@ -134,4 +135,7 @@
     <bean id="getCache" class="com.lwc.redis.aspectj.GetCachAop">
         <property name="redisTemplate" ref="redisTemplate"/>
     </bean>
+
+    <!--在spring中引入mongodb-->
+    <import resource="mongodb-context.xml"/>
 </beans>
