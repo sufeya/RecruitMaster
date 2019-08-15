@@ -1,20 +1,27 @@
 package com.lwc.controller;
 
+
 import com.lwc.pojo.User;
-import com.lwc.service.UserService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+
 @Controller
+@RequestMapping("/user")
 public class UserController {
-    @Autowired
-   private UserService userService;
-    @RequestMapping("/showUser")
-    public String showUser(){
-       User user= userService.getUser(1);
-        System.out.println("fdsa");
-        System.out.println(user.toString());
-        return null;
+    @RequestMapping("/test")
+    public String myTest(){
+        return "index";
+    }
+    @RequestMapping("/login")
+    public String userLogin(){
+        return "login";
+    }
+    @RequestMapping("/doLogin")
+    public String doLogin(User user){
+        return "";
+    }
+    public String userReg(User user){
+        return "";
     }
 }

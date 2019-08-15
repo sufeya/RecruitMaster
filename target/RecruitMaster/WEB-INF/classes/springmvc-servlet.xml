@@ -2,7 +2,6 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mvc="http://www.springframework.org/schema/mvc"
        xmlns:context="http://www.springframework.org/schema/context"
-       xmlns:aop="http://www.springframework.org/schema/aop"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
 
 
@@ -18,9 +17,9 @@
     </bean>
 
     <!--配置静态文件扫描-->
-    <mvc:resources mapping="/scripts/**" location="/scripts/"></mvc:resources>
-    <mvc:resources mapping="/css/**" location="/css/"></mvc:resources>
-    <mvc:resources mapping="/images/**" location="/images/"></mvc:resources>
+    <mvc:resources mapping="/style/js/**" location="/style/js/"></mvc:resources>
+    <mvc:resources mapping="/style/css/**" location="/style/css/"></mvc:resources>
+    <mvc:resources mapping="/style/images/**" location="/style/images/"></mvc:resources>
     <mvc:resources mapping="/upload/**" location="/upload/"></mvc:resources>
     <!-- 文件上传配置 -->
     <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
@@ -36,9 +35,4 @@
         <!-- uploadTempDir可以不做设置，有默认的路径，上传完毕会临时文件会自动被清理掉 -->
         <!-- <property name="uploadTempDir" value="/upload/"></property>-->
     </bean>
-
-
-
-
-
 </beans>
