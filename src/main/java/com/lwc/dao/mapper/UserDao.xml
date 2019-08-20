@@ -1,8 +1,36 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-        <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.lwc.dao.UserDao">
-<select id="selectUser" parameterType="Integer" resultType="user">
-  select * from user where u_id=#{u_id}
-</select>
+    <insert id="addUser" parameterType="user" >
+        <selectKey keyProperty="tId" order="AFTER" resultType="Integer">
+            SELECT LAST_INSERT_ID()
+        </selectKey>
+        insert into user(t_email,t_pwd,t_flag) value (#{tEmail},#{tPwd},#{tFlag})
+    </insert>
+    <select id="getAllUser" resultType="user" >
+        select * from user
+    </select>
+    <select id="selectUserByEmailAndPwd" resultType="user" parameterType="userTail">
+        select * from user where t_email=#{tEmail} and t_pwd =#{tPwd}
+    </select>
+    <select id="selectUserById" parameterType="Integer">
+        select * from user where t_id=#{tId}
+    </select>
 
+    <update id="updateUserById" parameterType="user">
+        update user u
+        <trim prefix="set" suffixOverrides=",">
+            <if test="tEmail !=null and tEmail !=''">
+                 t_email=#{tEmail},
+            </if>
+            <if test="tPwd !=null and tPwd !=''">
+                 t_pwd=#{tPwd},
+            </if>
+            <if test="tFlag !=null and tFlag !=''">
+                 t_flag=#{tFlag},
+            </if>
+        </trim>
+
+        where t_id=#{tId}
+    </update>
 </mapper>

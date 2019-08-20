@@ -23,6 +23,9 @@
         <constructor-arg name="mongoDbFactory" ref="mgFactory" />
     </bean>
 
+    <bean id="resumDaoImpl" class="com.lwc.dao.ResumDaoImpl">
+
+    </bean>
 
 
 </beans>

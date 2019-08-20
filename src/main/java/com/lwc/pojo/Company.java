@@ -1,5 +1,8 @@
 package com.lwc.pojo;
-public class Company {
+
+import java.io.Serializable;
+
+public class Company implements Serializable {
     //公司id
     private Integer cId;
     //公司名字
@@ -23,6 +26,16 @@ public class Company {
     //公司标签，用于存monogo的存储id
     private int cTag;
 
+    public Integer getuId() {
+        return uId;
+    }
+
+    public void setuId(Integer uId) {
+        this.uId = uId;
+    }
+
+    //用于关联用户id
+    private Integer uId;
     public Integer getcId() {
         return cId;
     }

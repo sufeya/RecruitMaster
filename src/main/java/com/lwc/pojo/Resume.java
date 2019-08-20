@@ -5,22 +5,33 @@ import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
+
+import java.io.Serializable;
+import java.util.List;
+
 /**
  * 简历的基本属性
  */
 @Document(collection = "resume")
-public class Resume {
+public class Resume implements Serializable {
     @Id
     private ObjectId _id;
-    //简历id
+    //所关联用户id
     @Field("rId")
     private Integer rId;
-    //所关联用户id
-    @Field("uId")
-    private Integer uId;
 
+    @Field("rName")
+    private String rName;
 
-//求职意向
+    public String getrName() {
+        return rName;
+    }
+
+    public void setrName(String rName) {
+        this.rName = rName;
+    }
+
+    //求职意向
     @Field("cos")
     private CareerObjective cos;
     //工作经验
@@ -37,10 +48,42 @@ public class Resume {
     @Field("pe")
     private ProjectExperience pe;
 
+    //用于标记用户模块是否算了分
+    private Integer tag;
+    //用于区分工作经验是否打分
+    private Integer weTag;
+
+    public Integer getWeTag() {
+        return weTag;
+    }
+
+    public void setWeTag(Integer weTag) {
+        this.weTag = weTag;
+    }
+
+    /*private List<WorkExperience> workExperiences;*/
+
+  /*  public List<WorkExperience> getWorkExperiences() {
+        return workExperiences;
+    }
+
+    public void setWorkExperiences(List<WorkExperience> workExperiences) {
+        this.workExperiences = workExperiences;
+    }*/
+
+    public Integer getTag() {
+        return tag;
+    }
+
+    public void setTag(Integer tag) {
+        this.tag = tag;
+    }
+
     //自我评价
     @Field("sa")
     private SelfAssessment sa;
-
+    @Field("score")
+    private Integer score;
     public Integer getrId() {
         return rId;
     }
@@ -49,15 +92,15 @@ public class Resume {
         this.rId = rId;
     }
 
-    public Integer getuId() {
-        return uId;
+    public Integer getScore() {
+        return score;
     }
 
-    public void setuId(Integer uId) {
-        this.uId = uId;
+    public void setScore(Integer score) {
+        this.score = score;
     }
 
-   public CareerObjective getCos() {
+    public CareerObjective getCos() {
         return cos;
     }
 

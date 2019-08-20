@@ -1,5 +1,7 @@
 package com.lwc.util;
 
+import org.springframework.stereotype.Component;
+
 import java.io.*;
 
 public class SerializableUtil {
@@ -10,10 +12,10 @@ public class SerializableUtil {
         try{
             ByteArrayInputStream bis=new ByteArrayInputStream(bytes);
             ObjectInputStream ois=new ObjectInputStream(bis);
-            obj=ois.read();
+            obj=ois.readObject();
             ois.close();
             bis.close();
-        } catch (IOException e) {
+        } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
         }
         return obj;

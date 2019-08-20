@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lwc.dao.UserTailDao">
+    <insert id="addUserTail" parameterType="userTail">
+        INSERT INTO `job_seek`.`usertail` (
+	`u_name`,
+	`u_mobile`,
+	`u_sex`,
+	`u_email`,
+	`u_statu`
+	`u_education`,
+	`t_id`,
+	`u_img`,
+	`u_workyear`
+)
+VALUES
+	(
+		#{uName},
+		#{uMobile},
+		#{uSex},
+		#{uEmail},
+		#{uStatu},
+		#{uEducation}
+		#{t_id},
+		#{uImg},
+		#{uWorkyear}
+	)
+    </insert>
+    <update id="updateUserTail" parameterType="userTail">
+        update userTail u
+        <trim prefix="set" suffixOverrides=",">
+        	<if test="uName !=null and uName!=''">
+				u.u_name =#{uName},
+			</if>
+			<if test="uMobile !=null and uMobile !=''">
+				u.u_mobile=#{uMobile},
+			</if>
+			 <if test="uSex !=null and uSex!=''" >
+				 u.u_sex=#{uSex},
+			 </if>
+			 <if test="uEmail !=null and uEmail !=''">
+				 u.u_email=#{uEmail},
+			 </if>
+			<if test="uStatu != null and uStatu != ''">
+				u.u_statu=#{uStatu},
+			</if>
+			<if test="uEducation !=null  and uEducation !=''" >
+				u_education=#{uEducation},
+			</if>
+			<if test="uImg !=null and uImg !=''">
+				u_img=#{uImg},
+			</if>
+			<if test="uWorkyear !=null and  uWorkyear!=''">
+				u_workyear=#{uWorkyear}
+			</if>
+        </trim>
+        where t_id=#{tId}
+    </update>
+
+	<select id="selectUserTailById" parameterType="Integer" resultType="userTail">
+		select * from usertail where t_id=#{tId}
+	</select>
+    <insert id="addUserImg" parameterType="userTail" >
+        insert into usertail(t_id,u_img) values (#{tId},#{uImg})
+    </insert>
+</mapper>

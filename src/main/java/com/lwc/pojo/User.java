@@ -12,8 +12,7 @@ public class User implements Serializable {
    private String tPwd;
    //用户是找工作，还是发布职位
    private Integer tFlag;
-   //用户是绑定简历，还是绑定公司
-   private Integer tBound;
+
 
     public Integer gettId() {
         return tId;
@@ -47,11 +46,13 @@ public class User implements Serializable {
         this.tFlag = tFlag;
     }
 
-    public Integer gettBound() {
-        return tBound;
-    }
-
-    public void settBound(Integer tBound) {
-        this.tBound = tBound;
+    @Override
+    public String toString() {
+        return "User{" +
+                "tId=" + tId +
+                ", tEmail='" + tEmail + '\'' +
+                ", tPwd='" + tPwd + '\'' +
+                ", tFlag=" + tFlag +
+                '}';
     }
 }

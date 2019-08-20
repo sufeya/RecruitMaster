@@ -1,7 +1,7 @@
 ﻿<!DOCTYPE HTML>
 <html>
 <head>
-<script id="allmobilize" charset="utf-8" src="style/js/allmobilize.min.js"></script>
+<script id="allmobilize" charset="utf-8" src="/style/js/allmobilize.min.js"></script>
 <meta http-equiv="Cache-Control" content="no-siteapp" />
 <link rel="alternate" media="handheld"  />
 <!-- end 云适配 -->
@@ -19,26 +19,26 @@ var ctx = "h";
 console.log(1);
 </script>
 <link rel="Shortcut Icon" href="h/images/favicon.ico">
-<link rel="stylesheet" type="text/css" href="style/css/style.css"/>
+<link rel="stylesheet" type="text/css" href="/style/css/style.css"/>
 
-<script src="style/js/jquery.1.10.1.min.js" type="text/javascript"></script>
+<script src="/style/js/jquery.1.10.1.min.js" type="text/javascript"></script>
 
-<script type="text/javascript" src="style/js/jquery.lib.min.js"></script>
-<script type="text/javascript" src="style/js/core.min.js"></script>
+<script type="text/javascript" src="/style/js/jquery.lib.min.js"></script>
+<script type="text/javascript" src="/style/js/core.min.js"></script>
 
 
 <script type="text/javascript">
 var youdao_conv_id = 271546; 
 </script> 
-<script type="text/javascript" src="style/js/conv.js"></script>
+<script type="text/javascript" src="/style/js/conv.js"></script>
 </head>
 
 <body id="login_bg">
 	<div class="login_wrapper">
 		<div class="login_header">
-        	<a href="h/"><img src="style/images/logo_white.png" width="285" height="62" alt="拉勾招聘" /></a>
-            <div id="cloud_s"><img src="style/images/cloud_s.png" width="81" height="52" alt="cloud" /></div>
-            <div id="cloud_m"><img src="style/images/cloud_m.png" width="136" height="95"  alt="cloud" /></div>
+        	<a href="h/"><img src="/style/images/logo_white.png" width="285" height="62" alt="拉勾招聘" /></a>
+            <div id="cloud_s"><img src="/style/images/cloud_s.png" width="81" height="52" alt="cloud" /></div>
+            <div id="cloud_m"><img src="/style/images/cloud_m.png" width="136" height="95"  alt="cloud" /></div>
         </div>
         
     	<input type="hidden" id="resubmitToken" value="9b207beb1e014a93bc852b7ba450db27" />		
@@ -47,16 +47,16 @@ var youdao_conv_id = 271546;
         		<ul class="register_radio clearfix">
 		            <li>
 		            	找工作
-		              	<input type="radio" value="0" name="type" /> 
+		              	<input type="radio" value="0" name="tFlag" />
 		            </li>
 		            <li>
 		           	           招人
-		              	<input type="radio" value="1" name="type" /> 
+		              	<input type="radio" value="1" name="tFlag" />
 		            </li>
 		        </ul> 
-            	<input type="text" id="email" name="email" tabindex="1" placeholder="请输入常用邮箱地址" />
+            	<input type="text" id="email" name="tEmail" tabindex="1" placeholder="请输入常用邮箱地址" />
                 <span class="error" style="display:none;" id="beError"></span>
-                <input type="password" id="password" name="password" tabindex="2" placeholder="请输入密码" />
+                <input type="password" id="password" name="tPwd" tabindex="2" placeholder="请输入密码" />
             	<label class="fl registerJianJu" for="checkbox">
             		<input type="checkbox" id="checkbox" name="checkbox" checked  class="checkbox valid" />我已阅读并同意<a href="h/privacy.html" target="_blank">《拉勾用户协议》</a>
            		</label>
@@ -89,83 +89,78 @@ var youdao_conv_id = 271546;
     		$('#beError').hide();
     	});
     	//验证表单
-	    	 $("#loginForm").validate({
-	    	        rules: {
-	    	        	type:{
-	    	        		required: true
-	    	        	},
-			    	   	email: {
-			    	    	required: true,
-			    	    	email: true
-			    	   	},
-			    	   	password: {
-			    	    	required: true,
-			    	    	rangelength: [6,16]
-			    	   	},
-			    	   	checkbox:{required:true}
-			    	},
-			    	messages: {
-			    		type:{
-	    	        		required:"请选择使用拉勾的目的"
-	    	        	},
-			    	 	email: {
-			    	    	required: "请输入常用邮箱地址",
-			    	    	email: "请输入有效的邮箱地址，如：vivi@lagou.com"
-			    	   	},
-			    	   	password: {
-			    	    	required: "请输入密码",
-			    	    	rangelength: "请输入6-16位密码，字母区分大小写"
-			    	   	},
-			    	   	checkbox: {
-			    	    	required: "请接受拉勾用户协议"
-			    	   	}
-			    	},
-			    	errorPlacement:function(label, element){/* 
-			    		if(element.attr("type") == "radio"){
-			    			label.insertAfter($(element).parents('ul')).css('marginTop','-20px');
-			    		}else if(element.attr("type") == "checkbox"){
-			    			label.inserresult.contenttAfter($(element).parent()).css('clear','left');
-			    		}else{
-			    			label.insertAfter(element);
-			    		} */			    		
-			    		/*modify nancy*/
-			    		if(element.attr("type") == "radio"){
-			    			label.insertAfter($(element).parents('ul')).css('marginTop','-20px');
-			    		}else if(element.attr("type") == "checkbox"){
-			    			label.insertAfter($(element).parent()).css('clear','left');
-			    		}else{
-			    			label.insertAfter(element);
-			    		};	
-			    	},
-			    	submitHandler:function(form){
-			    		var type =$('input[type="radio"]:checked',form).val();
-			    		var email =$('#email').val();
-			    		var password =$('#password').val();
-			    		var resubmitToken = $('#resubmitToken').val();
-			    		
-			    		var callback = $('#callback').val();
-			    		var authType = $('#authType').val();
-			    		var signature = $('#signature').val();
-			    		var timestamp = $('#timestamp').val();
-			    		
-			    		$(form).find(":submit").attr("disabled", true);
 
-			            $.ajax({
-			            	type:'POST',
-			            	data: {email:email,password:password,type:type,resubmitToken:resubmitToken, callback:callback, authType:authType, signature:signature, timestamp:timestamp},
-			            	url:ctx+'/user/register.json',
-			            	dataType:'json'
-			            }).done(function(result) {
-		            		$('#resubmitToken').val(result.resubmitToken);
-			            	if(result.success){
-			            		window.location.href=result.content;			            		
-			            	}else{
-								$('#beError').text(result.msg).show();
-			            	}
-			            	$(form).find(":submit").attr("disabled", false);			           		
-			            });
-			        }  
-	    	});
+            $("#loginForm").validate({
+                rules: {
+                    tFlag:{
+                        required: true
+                    },
+                    tEmail: {
+                        required: true,
+                        email: true
+                    },
+                    tPwd: {
+                        required: true,
+                        rangelength: [6,16]
+                    },
+                    checkbox:{required:true}
+                },
+                messages: {
+                    tFlag:{
+                        required:"请选择使用拉勾的目的"
+                    },
+                    tEmail: {
+                        required: "请输入常用邮箱地址",
+                        email: "请输入有效的邮箱地址，如：vivi@lagou.com"
+                    },
+                    tPwd: {
+                        required: "请输入密码",
+                        rangelength: "请输入6-16位密码，字母区分大小写"
+                    },
+                    checkbox: {
+                        required: "请接受拉勾用户协议"
+                    }
+                },
+                errorPlacement:function(label, element){
+
+                    if(element.attr("tFlag") == "radio"){
+                        label.insertAfter($(element).parents('ul')).css('marginTop','-20px');
+                    }else if(element.attr("tFlag") == "checkbox"){
+                        label.insertAfter($(element).parent()).css('clear','left');
+                    }else{
+                        label.insertAfter(element);
+                    };
+                },
+                submitHandler:function(form){
+
+                    var type =$('input[type="radio"]:checked',form).val();
+                    var email =$('#email').val();
+                    var password =$('#password').val();
+                    var resubmitToken = $('#resubmitToken').val();
+                    var json={tEmail:email,tPwd:password,tFlag:type};
+                    json=JSON.stringify(json);
+                    $.ajax({
+                        type:"post",
+                        contentType : "application/json;charset=UTF-8",
+                        url:"checkReg",
+                        data:json,
+                        dateType:"json",
+                        success:function (data) {
+                            if(data.result=="sucess")
+							{
+								alert("用户创建成功");
+								window.location.href="index";
+							}else{
+                            	alert("该用户存在，请从新输入")
+							}
+                        },
+                        error:function (data) {
+                            alert("用户创建失败");
+                        }
+                    });
+
+                }
+            });
     });
     </script>
 </body>

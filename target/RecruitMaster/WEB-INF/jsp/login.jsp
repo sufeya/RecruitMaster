@@ -1,7 +1,7 @@
 ﻿<!DOCTYPE HTML>
 <html>
 <head>
-<script id="allmobilize" charset="utf-8" src="style/js/allmobilize.min.js"></script>
+<script id="allmobilize" charset="utf-8" src="/style/js/allmobilize.min.js"></script>
 <meta http-equiv="Cache-Control" content="no-siteapp" />
 <link rel="alternate" media="handheld"  />
 <!-- end 云适配 -->
@@ -19,40 +19,40 @@ var ctx = "h";
 console.log(1);
 </script>
 <link rel="Shortcut Icon" href="h/images/favicon.ico">
-<link rel="stylesheet" type="text/css" href="style/css/style.css"/>
+<link rel="stylesheet" type="text/css" href="/style/css/style.css"/>
 
-<script src="style/js/jquery.1.10.1.min.js" type="text/javascript"></script>
+<script src="/style/js/jquery.1.10.1.min.js" type="text/javascript"></script>
 
-<script type="text/javascript" src="style/js/jquery.lib.min.js"></script>
-<script type="text/javascript" src="style/js/core.min.js"></script>
+<script type="text/javascript" src="/style/js/jquery.lib.min.js"></script>
+<script type="text/javascript" src="/style/js/core.min.js"></script>
 
 
 <script type="text/javascript">
 var youdao_conv_id = 271546; 
 </script> 
-<script type="text/javascript" src="style/js/conv.js"></script>
+<script type="text/javascript" src="/style/js/conv.js"></script>
 </head>
 
 <body id="login_bg">
 	<div class="login_wrapper">
 		<div class="login_header">
-        	<a href="h/"><img src="style/images/logo_white.png" width="285" height="62" alt="拉勾招聘" /></a>
-            <div id="cloud_s"><img src="style/images/cloud_s.png" width="81" height="52" alt="cloud" /></div>
-            <div id="cloud_m"><img src="style/images/cloud_m.png" width="136" height="95"  alt="cloud" /></div>
+        	<a href="h/"><img src="/style/images/logo_white.png" width="285" height="62" alt="拉勾招聘" /></a>
+            <div id="cloud_s"><img src="/style/images/cloud_s.png" width="81" height="52" alt="cloud" /></div>
+            <div id="cloud_m"><img src="/style/images/cloud_m.png" width="136" height="95"  alt="cloud" /></div>
         </div>
         
     	<input type="hidden" id="resubmitToken" value="" />		
 		 <div class="login_box">
-        	<form id="loginForm" action="index.html">
-				<input type="text" id="email" name="email" value="" tabindex="1" placeholder="请输入登录邮箱地址" />
-			  	<input type="password" id="password" name="password" tabindex="2" placeholder="请输入密码" />
+        	<form id="loginForm">
+				<input type="text" id="email" name="tEmail" value="" tabindex="1" placeholder="请输入登录邮箱地址" />
+			  	<input type="password" id="password" name="tPwd" tabindex="2" placeholder="请输入密码" />
 				<span class="error" style="display:none;" id="beError"></span>
 			    <label class="fl" for="remember"><input type="checkbox" id="remember" value="" checked="checked" name="autoLogin" /> 记住我</label>
 			    <a href="reset.html" class="fr" target="_blank">忘记密码？</a>
 			    
 				<!--<input type="submit" id="submitLogin" value="登 &nbsp; &nbsp; 录" />-->
-				<a style="color:#fff;" href="index.html" class="submitLogin" title="登 &nbsp; &nbsp; 录"/>登 &nbsp; &nbsp; 录</a>
 
+				<input type="submit" id="submitLogin" value="登 &nbsp; &nbsp; 录" />
 			    
 			    <input type="hidden" id="callback" name="callback" value=""/>
                 <input type="hidden" id="authType" name="authType" value=""/>
@@ -61,7 +61,7 @@ var youdao_conv_id = 271546;
 			</form>
 			<div class="login_right">
 				<div>还没有拉勾帐号？</div>
-				<a  href="register.html"  class="registor_now">立即注册</a>
+				<a  href="/user/regs"  class="registor_now">立即注册</a>
 			    <div class="login_others">使用以下帐号直接登录:</div>
 			    <a  href="h/ologin/auth/sina.html"  target="_blank" class="icon_wb" title="使用新浪微博帐号登录"></a>
 			    <a  href="h/ologin/auth/qq.html"  class="icon_qq" target="_blank" title="使用腾讯QQ帐号登录"></a>
@@ -77,20 +77,20 @@ $(function(){
 	 		/* onkeyup: false,
 	    	focusCleanup:true, */
 	        rules: {
-	    	   	email: {
+	    	   	tEmail: {
 	    	    	required: true,
 	    	    	email: true
 	    	   	},
-	    	   	password: {
+	    	   	tPwd: {
 	    	    	required: true
 	    	   	}
 	    	},
 	    	messages: {
-	    	   	email: {
+	    	   	tEmail: {
 	    	    	required: "请输入登录邮箱地址",
 	    	    	email: "请输入有效的邮箱地址，如：vivi@lagou.com"
 	    	   	},
-	    	   	password: {
+	    	   tPwd: {
 	    	    	required: "请输入密码"
 	    	   	}
 	    	},
@@ -103,29 +103,23 @@ $(function(){
 	    		var email = $('#email').val();
 	    		var password = $('#password').val();
 	    		var remember = $('#remember').val();
-	    		
-	    		var callback = $('#callback').val();
-	    		var authType = $('#authType').val();
-	    		var signature = $('#signature').val();
-	    		var timestamp = $('#timestamp').val();
-	    		
 	    		$(form).find(":submit").attr("disabled", true);
-	            $.ajax({
-	            	type:'POST',
-	            	data:{email:email,password:password,autoLogin:remember, callback:callback, authType:authType, signature:signature, timestamp:timestamp},
-	            	url:ctx+'/user/login.json'
-	            }).done(function(result) {
-					if(result.success){
-					 	if(result.content.loginToUrl){
-							window.location.href=result.content.loginToUrl;
-	            		}else{
-	            			window.location.href=ctx+'/';
-	            		} 
-					}else{
-						$('#beError').text(result.msg).show();
+               var json=JSON.stringify({tEmail:email,tPwd:password,autoLogin:remember});
+                $.ajax({
+                    type:"post",
+                    contentType : "application/json;charset=UTF-8",
+                    url:"doLogin",
+                    data:json,
+                    dateType:"json",
+					success:function(data){
+						if(data.result=="success"){
+							alert("登入成功");
+							window.location.href="/index";
+						}else{
+							alert("用户密码错误，请重新确认");
+						}
 					}
-					$(form).find(":submit").attr("disabled", false);
-	            }); 
+                })
 	        }  
 		});
 })

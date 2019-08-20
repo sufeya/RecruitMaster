@@ -2,6 +2,7 @@ package com.lwc.redis.aspectj;
 
 import com.lwc.redis.annotation.GetCache;
 import com.lwc.util.RedisCache;
+import com.lwc.util.SerializableUtil;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
@@ -19,7 +20,8 @@ import java.lang.reflect.Method;
 public class GetCachAop {
     @Autowired
     private RedisTemplate<Serializable,Object> redisTemplate;
-   private RedisCache redisCache=new RedisCache();
+    @Autowired
+    private RedisCache redisCache;
    //定义切点
    @Pointcut("@annotation(com.lwc.redis.annotation.GetCache)")
     public void getCache(){
@@ -31,12 +33,13 @@ public class GetCachAop {
        //生成redis中的id,根据自己指定的格式
        String redisKey=getCacheKey(joinPoint);
 
+       System.out.println(redisKey);
        //获取从redis中查询得到的对象
        Object object=redisCache.getDataFromRedis(redisKey);
 
        //如果查询到了
        if(null!=object){
-           System.out.println("从redis中获取到了数据");
+           System.out.println("从redis中获得数据");
            return object;
        }else{
            System.out.println("从数据库中查询数据");

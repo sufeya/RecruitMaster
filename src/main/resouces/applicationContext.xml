@@ -15,7 +15,7 @@
     </context:component-scan>
 
     <!--加载资源文件,该标签全文只能有一个-->
-    <context:property-placeholder location="classpath:jdbc.properties,classpath:redisconfig.properties"/>
+    <context:property-placeholder location="classpath:jdbc.properties,classpath*:redisconfig.properties"/>
 
     <!--配置数据源，阿里数据连接池-->
     <bean id="dataSource" class="${jdbc.dataType}" destroy-method="close">
@@ -85,7 +85,6 @@
     <!--配置redis缓存-->
     <!--redis配置-->
     <bean id="jedisPoolConfig" class="redis.clients.jedis.JedisPoolConfig">
-
         <!--控制一个pool最多有多少个状态为空闲的jedis实例-->
         <property name="maxIdle" value="${redis.maxIdle}"></property>
         <!--当borrow(引入)一个实例时，最大的等待时间，如果超过则抛出jedisConnectionException-->
@@ -102,7 +101,6 @@
         <constructor-arg index="1" value="${redis.host}"></constructor-arg>
         <constructor-arg index="2" value="${redis.port}"></constructor-arg>
         <constructor-arg index="3" value="${redis.timeout}"></constructor-arg>
-
     </bean>
     <!-- redis连接工厂 -->
     <bean id="JedisConnectionFactory" class="org.springframework.data.redis.connection.jedis.JedisConnectionFactory">
@@ -135,7 +133,7 @@
     <bean id="getCache" class="com.lwc.redis.aspectj.GetCachAop">
         <property name="redisTemplate" ref="redisTemplate"/>
     </bean>
-
+    <bean id="redisCache" class="com.lwc.util.RedisCache"></bean>
     <!--在spring中引入mongodb-->
     <import resource="mongodb-context.xml"/>
 </beans>

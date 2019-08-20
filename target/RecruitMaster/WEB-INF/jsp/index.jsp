@@ -1,7 +1,7 @@
 ﻿<!DOCTYPE HTML>
 <html xmlns:wb="http://open.weibo.com/wb">
 <head>
-    <script id="allmobilize" charset="utf-8" src="style/js/allmobilize.min.js"></script>
+    <script id="allmobilize" charset="utf-8" src="/style/js/allmobilize.min.js"></script>
     <meta http-equiv="Cache-Control" content="no-siteapp"/>
     <link rel="alternate" media="handheld"/>
     <!-- end 云适配 -->
@@ -22,9 +22,9 @@
     <link rel="stylesheet" type="text/css" href="/style/css/style.css"/>
     <link rel="stylesheet" type="text/css" href="/style/css/external.min.css"/>
     <link rel="stylesheet" type="text/css" href="/style/css/popup.css"/>
-    <script src="style/js/jquery.1.10.1.min.js" type="text/javascript"></script>
+    <script src="/style/js/jquery.1.10.1.min.js" type="text/javascript"></script>
     <script type="text/javascript" src="/style/js/jquery.lib.min.js"></script>
-    <script src="style/js/ajaxfileupload.js" type="text/javascript"></script>
+    <script src="/style/js/ajaxfileupload.js" type="text/javascript"></script>
     <script type="text/javascript" src="/style/js/additional-methods.js"></script>
     <!--[if lte IE 8]>
     <script type="text/javascript" src="/style/js/excanvas.js"></script>
@@ -43,15 +43,15 @@
             </a>
             <ul class="reset" id="navheader">
                 <li class="current"><a href="index.html">首页</a></li>
-                <li><a href="recruit/companylist.html">公司</a></li>
+                <li><a href="/company/companyIndex">公司</a></li>
                 <li><a href="h/toForum.html" target="_blank">论坛</a></li>
-                <li><a href="interviewer/jianli.html" rel="nofollow">我的简历</a></li>
+                <li><a href="/resume/resumIndex" rel="nofollow">我的简历</a></li>
                 <li><a href="recruit/create.html" rel="nofollow">发布职位</a></li>
             </ul>
             <ul class="loginTop">
                 <li><a href="/user/login" rel="nofollow">登录</a></li>
                 <li>|</li>
-                <li><a href="register.html" rel="nofollow">注册</a></li>
+                <li><a href="/user/regs" rel="nofollow">注册</a></li>
             </ul>
         </div>
     </div><!-- end #header -->

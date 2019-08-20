@@ -336,18 +336,19 @@
     </pluginManagement>
       <resources>
           <resource>
-              <directory>src/main/resouces</directory>
-              <includes>
-                  <include>**</include>
-              </includes>
+              <directory>src/main</directory>
+            <includes>
+              <include>**/*.xml</include>
+              <include>**/*.properties</include>
+            </includes>
           </resource>
-          <resource>
-              <directory>src/main/java</directory>
-              <includes>
-                  <include>**/*.xml</include>
-                  <include>**/*.properties</include>
-              </includes>
-          </resource>
+        <resource>
+          <directory>src/main/java</directory>
+          <includes>
+            <include>**/**/*.xml</include>
+
+          </includes>
+        </resource>
       </resources>
   </build>
 </project>

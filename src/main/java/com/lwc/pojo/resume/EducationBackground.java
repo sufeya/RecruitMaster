@@ -1,14 +1,34 @@
 package com.lwc.pojo.resume;
 
+import org.bson.types.ObjectId;
+
+import java.io.Serializable;
 import java.util.Date;
 
-public class EducationBackground {
+public class EducationBackground implements Serializable {
     private String school;
-    private Date startDate;
-    private Date endDate;
+    private String startDate;
+    private String endDate;
     private String major;
-
     private String degree;
+    private Integer  tag;
+    private ObjectId eId;
+
+    public ObjectId geteId() {
+        return eId;
+    }
+
+    public void seteId(ObjectId eId) {
+        this.eId = eId;
+    }
+
+    public Integer getTag() {
+        return tag;
+    }
+
+    public void setTag(Integer tag) {
+        this.tag = tag;
+    }
 
     public String getSchool() {
         return school;
@@ -18,19 +38,19 @@ public class EducationBackground {
         this.school = school;
     }
 
-    public Date getStartDate() {
+    public String getStartDate() {
         return startDate;
     }
 
-    public void setStartDate(Date startDate) {
+    public void setStartDate(String startDate) {
         this.startDate = startDate;
     }
 
-    public Date getEndDate() {
+    public String getEndDate() {
         return endDate;
     }
 
-    public void setEndDate(Date endDate) {
+    public void setEndDate(String endDate) {
         this.endDate = endDate;
     }
 
