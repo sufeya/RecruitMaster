@@ -26,7 +26,7 @@
     <aspectjrt.version>1.5.3</aspectjrt.version>
     <commons-io.version>2.4</commons-io.version>
     <common-fileupload.version>1.3.1</common-fileupload.version>
-    <spring-core.version>5.1.5.RELEASE</spring-core.version>
+    <spring-core.version>5.3.19</spring-core.version>
     <spring-bean.version>5.1.5.RELEASE</spring-bean.version>
     <spring-webmvc.version>5.1.5.RELEASE</spring-webmvc.version>
     <spring-web.version>5.1.5.RELEASE</spring-web.version>
